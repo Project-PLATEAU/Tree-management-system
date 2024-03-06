@@ -1,0 +1,15 @@
+#dialog_detail_datatable table {
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+#dialog_detail_datatable table th {
+    border: 1px solid #000;
+    padding: 8px;
+    background-color: #eff;
+    white-space: nowrap;
+}
+#dialog_detail_datatable table td {
+    border: 1px solid #000;
+    padding: 8px;
+    white-space: nowrap;
+}
