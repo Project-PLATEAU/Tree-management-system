@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>環境構築手順書 </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="環境構築手順書 ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../resources/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="環境構築手順書">環境構築手順書</h1>
+
+<h1 id="1-本書について">1 本書について</h1>
+<p>本書では、樹木管理システム（以下「本システム」という。）の利用環境構築手順について記載しています。本システムの構成や仕様の詳細については以下も参考にしてください。</p>
+<p><a href="https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_tech_doc_0030_ver01.pdf">技術検証レポート</a></p>
+<h1 id="2-動作環境">2 動作環境</h1>
+<p>本変換ツールの動作環境は以下のとおりです。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>最小動作環境</th>
+<th>推奨動作環境</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仮想サーバー</td>
+<td>Amazon EC2 t2.small 以上</td>
+<td>同左</td>
+</tr>
+</tbody>
+</table>
+<h1 id="3-事前準備">3 事前準備</h1>
+<p>本システムで利用する下記の商用、オープンソースのソフトウェアおよびデータベースを準備します。</p>
+<p>（1）データベースの準備
+<a href="https://github.com/postgres/postgres">こちら</a>を利用してPostgreSQLサーバを起動します。その上で、位置情報を扱うための拡張機能である<a href="https://github.com/postgis/postgis">PostGIS</a>をインストールします。</p>
+<p>（2）ウェブサーバの準備
+<a href="https://httpd.apache.org/">こちら</a>を利用してウェブサーバを起動します。</p>
+<p>（3）FME Flowの準備
+<a href="https://safe.com/">こちら</a>を利用してFME Flowを起動します。
+尚、FME Flowは、商用のソフトウェアです。業務目的で利用するには、ライセンスの購入が必要です。新規ライセンスの購入については、Pacific Spatial Solutions 株式会社（Safe Software の公式パートナー）にお問い合わせください。</p>
+<p>（4）Amazon S3の準備
+<a href="https://aws.amazon.com/jp/s3/">こちら</a>からAmazon S3のアカウントを取得し、本システムで使用するためのバケットを作成します。一つの公園を対象とする場合はstandardで十分ですが、ご利用になるデータサイズに応じたサイズのバケットを選択してください。</p>
+<p>（5）CARTOの準備
+<a href="https://carto.com/">こちら</a>からCARTOのアカウントを取得し、本システムで使用するためのアカウントを作成します。新規ライセンスの購入については、Pacific Spatial Solutions 株式会社（CARTODB社の公式パートナー）にお問い合わせください。</p>
+<h1 id="4-インストール手順">4 インストール手順</h1>
+<p>（1）ウェブサーバにコードを配置
+<a href="https://github.com/Project-PLATEAU/Tree-management-system/src/">こちら</a>からコードをダウンロードします。
+展開したファイルを 3（2）で準備したウェブサーバのwebrootに配置します。</p>
+<p>（2）環境変数の設定
+下記の通り、環境変数を設定します。</p>
+<p><code>REACT_APP_TITLE=&lt;アプリタイトル&gt; REACT_APP_AGGRID_LICENSE=&lt;AgGridLicenseKey&gt; REACT_APP_SQL_ENDPOINT=&lt;SQLAPIエンドポイント&gt; REACT_APP_ENV_ENDPOINT=&lt;ENVエンドポイント&gt; REACT_APP_INIT_MAP_CENTER_LAT=&lt;地図初期経度&gt; REACT_APP_INIT_MAP_CENTER_LNG=&lt;地図初期緯度&gt; REACT_APP_CARTO_SSL=&lt;CARTODBにSSLで接続するか&gt; REACT_APP_CARTO_USERNAME=&lt;CARTODBのユーザ名&gt; REACT_APP_CARTO_DOMAIN=&lt;CARTODBのドメイン&gt; REACT_APP_CARTO_SERVER_URL=&lt;CARTODBのサーバURL&gt; REACT_APP_CARTO_ENDPOINT=&lt;CARTODB APIエンドポイント&gt; REACT_APP_CARTO_SQLAPI_PREFIX=&lt;SQLAPI接続子&gt; REACT_APP_CARTO_API_KEY=&lt;CARTODB ReadのAPIKEY&gt; REACT_APP_IMAGE_URL=&lt;画像のBASEDURL&gt; REACT_APP_FRAME_IMAGE_URL=&lt;フレーム画像のBASEURL&gt; REACT_APP_MAP_LAYER_DOURODAICHO_URL=&lt;背景図レイヤーのURL&gt; REACT_APP_MAP_LAYER_GAIKU_URL=&lt;街区レイヤーのURL&gt; REACT_APP_FIREBASE_API_KEY=&lt;FIREBASE情報&gt; REACT_APP_FIREBASE_AUTH_DOMAIN=&lt;FIREBASE情報&gt; REACT_APP_FIREBASE_PROJECT_ID=&lt;FIREBASE情報&gt; REACT_APP_FIREBASE_STORAGE_BUCKET=&lt;FIREBASE情報&gt; REACT_APP_FIREBASE_MESSAGING_SENDER_ID=&lt;FIREBASE情報&gt; REACT_APP_FIREBASE_APP_ID=&lt;FIREBASE情報&gt; REACT_APP_FIREBASE_MEASUREMENT_ID=&lt;FIREBASE情報&gt; REACT_APP_TABLE_TREE_MASTER=&lt;樹木マスターテーブル名&gt; REACT_APP_TABLE_TREE_EDITED=&lt;樹木編集テーブル&gt; REACT_APP_TABLE_COMMENT=&lt;コメントテーブル&gt; REACT_APP_TABLE_USER=&lt;ユーザテーブル&gt; REACT_APP_TABLE_UGREEN=&lt;U-Green様データテーブル&gt; REACT_APP_TABLE_TREE_VIEW=&lt;樹木ビュー&gt; REACT_APP_TABLE_COMMENT_VIEW=&lt;コメントビュー&gt; REACT_APP_TABLE_TREE_CHANGE_VIEW=&lt;変更履歴テーブル&gt;</code></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
