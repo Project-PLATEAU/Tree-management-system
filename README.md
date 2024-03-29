@@ -21,7 +21,7 @@
 
 
 ## 3. 利用手順
-本システムの構築手順及び利用手順については[利用チュートリアル](https://r5-plateau-acn.github.io/SolarPotential/)を参照してください。
+本システムの構築手順及び利用手順については[利用チュートリアル](https://Project-PLATEAU.github.io/Tree-management-system/)を参照してください。
 
 ## 4. システム概要
 
@@ -96,5 +96,4 @@
 
 ## 10. 参考資料
 - 技術検証レポート: https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_tech_doc_0084_ver01.pdf
-- PLATEAU WebサイトのUse caseページ「樹木管理台帳システム」: https://www.mlit.go.jp/plateau/use-case/uc22-013/
-⑫
+- PLATEAU WebサイトのUse caseページ「市民協働による樹木管理DX」: https://www.mlit.go.jp/plateau/use-case/uc23-14/
